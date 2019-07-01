@@ -12,13 +12,11 @@ Setup:
   <li>Clone this git repository <i>https://github.com/code-rius/WhatsOnLRT/</i></li>
   <li>Navigate to root directory of the repository  $<code>cd /WhatsOnLRT</code></li>
   <li>run %<code>docker-compose up</code>
-    <p style="margin-top:0">
+    <p>
       *Note, that one might need to run the command as $<code>sudo docker-compose up</code> instead
     </p>
   </li>
-  <li></li>
-  <li></li>
-  <li></li>
+  <li>On your local browser navigate to <url>localhost:3000/</url></li>
   
 </ul>
   
