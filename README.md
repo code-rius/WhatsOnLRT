@@ -16,7 +16,7 @@ Setup:
       *Note, that one might need to run the command as $<code>sudo docker-compose up</code> instead
     </p>
   </li>
-  <li>On your local browser navigate to <url>localhost:3000/</url></li>
+  <li>On your local browser navigate to <i>localhost:3000/</i></li>
   
 </ul>
   
