@@ -10,8 +10,12 @@ Setup:
 
 <ul>
   <li>Clone this git repository <i>https://github.com/code-rius/WhatsOnLRT/</i></li>
-  <li>Navigate to repository directory <code>$cd /WhatsOnLRT</li>
-  <li></li>
+  <li>Navigate to root directory of the repository  $<code>cd /WhatsOnLRT</code></li>
+  <li>run %<code>docker-compose up</code>
+    <p>
+      *Note, that one might need to run the command as $<code>sudo docker-compose up</code> instead
+    </p>
+  </li>
   <li></li>
   <li></li>
   <li></li>
