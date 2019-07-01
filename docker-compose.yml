@@ -2,9 +2,11 @@ version: '3'
 services:
   backend:
     build: ./backend
+    # image: whatsonlrt.azurecr.io/whatsonlrt-back:latest
     ports:
       - "9000:9000"
   fronend: 
     build: ./frontend
+    # image: whatsonlrt.azurecr.io/whatsonlrt-front:latest
     ports:
       - "3000:3000"

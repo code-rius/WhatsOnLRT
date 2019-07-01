@@ -3,48 +3,34 @@ let cheerio = require("cheerio");
 let express = require("express");
 let router = express.Router();
 
-
-
-
 router.get("/", function(req, res, next) {
+    // Send a request to lrt-televizija
     request('https://www.lrt.lt/mediateka/tiesiogiai/lrt-televizija', (error, response, html) => {
+        // If request doens't return an error - perform scraping
         if (!error && response.statusCode == 200) {
+            // Array variable to hold information about each TV program
             const channels = [];
+            // HTML from requested webpage
             const $ = cheerio.load(html);
-
-            // const showTime = $('.data-block__text', '#tvprog').text();
-            // const showTitle = $('.channel-item__title', '#tvprog').text();
-
+            // Iterage every item in banner "Tiesiogiai"
             $('.channel-item', '#tvprog').each((i, el) => {
+                // Assign temporary values for each instance of a TV program
                 let time = $(el).find('.data-block__text').text();
                 let title = $(el).find('.channel-item__title').text();
                 let channel = $(el).find('.channel-item__link').attr('href');
-                console.log(typeof channel);
+                // Extrapolate chanel name from chanel URL
                 channel = channel.replace('/mediateka/tiesiogiai/', '');
-                // channel = channel.match(/lrt.*$/, channel);
-
+                // Bundle all temporary values into a JS objects
                 let program = { Time: time, Title: title, Channel: channel };
+                // Push JS objecto onto "channels" array.
                 channels.push(program);
-                // console.log(time + '\t' + title + '\t' + channel);
             });
-
+            // Stringify data, so it is no longer in array filled with objects
             var myJSON = JSON.stringify(channels);
-            console.log(myJSON);
+            // Send data
             res.send(myJSON);
         }
     });
-
-    var myObj = {
-        channel: "LTR HD", 
-        title: "Telemuno presenta", 
-        time: "07:00 - 08:00"
-    };
-
-    
-
-    // var myJSON = JSON.stringify(channels);
-    // console.log(myObj);
-    // res.send(myJSON);
 });
 
 module.exports = router;

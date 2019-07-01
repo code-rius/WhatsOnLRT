@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
 
 class Channels extends Component {
-
+    // Constructor
     constructor(props) {
         super(props);
         this.state = { apiResponse: "{}" };
     }
 
+    // Calling backend API for data
     callAPI() {
         fetch("http://localhost:9000/testAPI")
             .then(res => res.text())
             .then(res => this.setState({ apiResponse: res }));
     }
 
+    // Calling callAPI() function
     componentWillMount() {
         this.callAPI();
     }
     render() {
+        // Retrieve a JSON from backend. Set it to variable "myJSON"
         var myJSON = this.state.apiResponse;
+        // Waiting for data from Backend API
         try {
-            console.log(JSON.parse(myJSON));
+            // Parsing JSON to get a JS object representation of it
             myJSON = JSON.parse(myJSON)
+            // Convert JS Object to an array
             var arr = [];
             Object.keys(myJSON).forEach(function (key) {
                 arr.push(myJSON[key]);
@@ -30,6 +35,7 @@ class Channels extends Component {
         }
         return (
             <div className="card-deck">
+                {/* For each item in "arr" we return an HTML structure populated with respective data. The structure is defined in "ClassItem"  */}
                 {arr.map(item => <ChannelItem key={item.Channel} channel={item.Channel} title={item.Title} time={item.Time} />)}
             </div>
         );
