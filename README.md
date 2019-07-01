@@ -17,8 +17,10 @@ Setup:
     </p>
   </li>
   <li>On your local browser navigate to <i>localhost:3000/</i></li>
-  
+  <li>Woulah!</li>
 </ul>
+
+To terminate the application hit "control + c" in the terminal.
   
 
   
